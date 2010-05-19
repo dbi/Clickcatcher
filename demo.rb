@@ -63,11 +63,11 @@ QUEUE = {
         
       <h2>Example</h2>
       <p>Say we have a link.</p>
-      <div class="javascript" style="font-size:0.8em;font-family:monospace;color: #006; border: 1px solid #d0d0d0; background-color: #f0f0f0;"><ol><li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;"><span style="color: #339933;">&lt;</span>a <span style="color: #003366; font-weight: bold;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;example&quot;</span> href<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;http://www.example.org&quot;</span><span style="color: #339933;">&gt;</span>Magic link<span style="color: #339933;">&lt;/</span>a<span style="color: #339933;">&gt;</span></div></li>
+      <div class="javascript" style="font-size:0.8em;font-family:monospace;color: #006; border: 1px solid #d0d0d0; background-color: #f0f0f0;"><ol><li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;"><span style="color: #339933;">&lt;</span>a <span style="color: #003366; font-weight: bold;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;guarded&quot;</span> href<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;http://www.example.org&quot;</span><span style="color: #339933;">&gt;</span>Magic link<span style="color: #339933;">&lt;/</span>a<span style="color: #339933;">&gt;</span></div></li>
       </ol></div>
       <p>We want to display an alert box when this link is clicked. So we add this script to the bottom of the page.</p>
       <div class="javascript" style="font-size:0.8em;font-family:monospace;color: #006; border: 1px solid #d0d0d0; background-color: #f0f0f0;"><ol><li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;"><span style="color: #006600; font-style: italic;">// slow-request.js</span></div></li>
-      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">$<span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'.example'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">click</span><span style="color: #009900;">&#40;</span><span style="color: #003366; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">$<span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'.guarded'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">click</span><span style="color: #009900;">&#40;</span><span style="color: #003366; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; <span style="color: #000066;">alert</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;success!&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">;</span></div></li>
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;"><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
@@ -104,10 +104,10 @@ QUEUE = {
       <p>(This script will need to be loaded as early as possible.)</p>
 
       <h2>Demo</h2>
-      <p><a class="example" href="http://www.example.org">Classic behaviour</a>
+      <p><a href="http://www.example.org">Classic behaviour</a>
         <br>Expected behaviour for a click during the first 5 seconds is to be taken to www.example.org
         <br>Expected behaviour after 5 seconds is an alert with the text "success!"</p>
-      <p><a class="example guarded" href="http://www.example.org">With the clickcatcher script</a>
+      <p><a class="guarded" href="http://www.example.org">With the clickcatcher script</a>
         <br>Expected behaviour for a click during the first 5 seconds; delay the click to the fifth second then display an alert with the text "success!"
         <br>Expected behaviour after 5 seconds is an alert with the text "success!"</p>
     </div>
@@ -116,7 +116,7 @@ QUEUE = {
 </html>
 
 @@script
-$('.example').click(function() {
+$('.guarded').click(function() {
   alert("success!");
   return false;
 });
