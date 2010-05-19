@@ -26,6 +26,15 @@ __END__
 <html>
   <head>
     <title>Clickcatcher proof of concept</title>
+    <style type="text/css" media="screen">
+      #main {
+        max-width: 780px;
+        margin-left: 20px;
+      }
+      ul {
+        margin-top:0.5em;
+      }
+    </style>
     <script src="http://code.jquery.com/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
 QUEUE = {
@@ -45,16 +54,20 @@ QUEUE = {
 (function () {
   $(document).bind("click", QUEUE.click_handler);
   $(document).ready(function () {
-    $(document).unbind("click", QUEUE.click_handler);
-    for (var i=0, il=QUEUE.clicks.length; i<il; i++) {
-      $(QUEUE.clicks[i].target).click();
-    };
+    // setTimeout make sure this function is executed after everthing
+    // else when load is triggered.
+    setTimeout(function () {
+       $(document).unbind("click", QUEUE.click_handler);
+       for (var i=0, il=QUEUE.clicks.length; i<il; i++) {
+         $(QUEUE.clicks[i].target).click();
+       }
+    }, 0);
   });
 })();
     </script>
   </head>
   <body>
-    <div>
+    <div id="main">
       <h1>Clickcatcher proof of concept</h1>
       
       <h2>Problem</h2>
@@ -94,29 +107,40 @@ QUEUE = {
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;"><span style="color: #009900;">&#40;</span><span style="color: #003366; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; $<span style="color: #009900;">&#40;</span>document<span style="color: #009900;">&#41;</span>.<span style="color: #660066;">bind</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;click&quot;</span><span style="color: #339933;">,</span> QUEUE.<span style="color: #660066;">click_handler</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; $<span style="color: #009900;">&#40;</span>document<span style="color: #009900;">&#41;</span>.<span style="color: #660066;">ready</span><span style="color: #009900;">&#40;</span><span style="color: #003366; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
-      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; $<span style="color: #009900;">&#40;</span>document<span style="color: #009900;">&#41;</span>.<span style="color: #660066;">unbind</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;click&quot;</span><span style="color: #339933;">,</span> QUEUE.<span style="color: #660066;">click_handler</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
-      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; <span style="color: #000066; font-weight: bold;">for</span> <span style="color: #009900;">&#40;</span><span style="color: #003366; font-weight: bold;">var</span> i<span style="color: #339933;">=</span><span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> il<span style="color: #339933;">=</span>QUEUE.<span style="color: #660066;">clicks</span>.<span style="color: #660066;">length</span><span style="color: #339933;">;</span> i<span style="color: #339933;">&lt;</span>il<span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
-      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; &nbsp; $<span style="color: #009900;">&#40;</span>QUEUE.<span style="color: #660066;">clicks</span><span style="color: #009900;">&#91;</span>i<span style="color: #009900;">&#93;</span>.<span style="color: #660066;">target</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">click</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
-      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; <span style="color: #006600; font-style: italic;">// setTimeout make sure this function is executed after everything</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; <span style="color: #006600; font-style: italic;">// else when load is triggered.</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; setTimeout<span style="color: #009900;">&#40;</span><span style="color: #003366; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; &nbsp; &nbsp;$<span style="color: #009900;">&#40;</span>document<span style="color: #009900;">&#41;</span>.<span style="color: #660066;">unbind</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;click&quot;</span><span style="color: #339933;">,</span> QUEUE.<span style="color: #660066;">click_handler</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #000066; font-weight: bold;">for</span> <span style="color: #009900;">&#40;</span><span style="color: #003366; font-weight: bold;">var</span> i<span style="color: #339933;">=</span><span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> il<span style="color: #339933;">=</span>QUEUE.<span style="color: #660066;">clicks</span>.<span style="color: #660066;">length</span><span style="color: #339933;">;</span> i<span style="color: #339933;">&lt;</span>il<span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$<span style="color: #009900;">&#40;</span>QUEUE.<span style="color: #660066;">clicks</span><span style="color: #009900;">&#91;</span>i<span style="color: #009900;">&#93;</span>.<span style="color: #660066;">target</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">click</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&#125;</span></div></li>
+      <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;"><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
       </ol></div>
       <p>(This script will need to be loaded as early as possible.)</p>
 
       <h2>Demo</h2>
-      <p><a href="http://www.example.org">Classic behaviour</a>
-        <br>Expected behaviour for a click during the first 5 seconds is to be taken to www.example.org
-        <br>Expected behaviour after 5 seconds is an alert with the text "success!"</p>
-      <p><a class="guarded" href="http://www.example.org">With the clickcatcher script</a>
-        <br>Expected behaviour for a click during the first 5 seconds; delay the click to the fifth second then display an alert with the text "success!"
-        <br>Expected behaviour after 5 seconds is an alert with the text "success!"</p>
+      <a href="http://www.example.org">Classic behaviour</a>
+      <ul>
+        <li>Expected behaviour for a click during the first 5 seconds is to be taken to www.example.org</li>
+        <li>Expected behaviour after 5 seconds is an alert with the text "success!"</li>
+      </ul>
+      
+      <a class="guarded" href="http://www.example.org">With the clickcatcher script</a>
+      <ul>
+        <li>Expected behaviour for a click during the first 5 seconds; delay the click to the fifth second then display an alert with the text "success!"</li>
+        <li>Expected behaviour after 5 seconds is an alert with the text "success!"</li>
+      </ul>
     </div>
     <script src="/slow-request.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
 
 @@script
-$('.guarded').click(function() {
-  alert("success!");
-  return false;
+$(document).ready(function () {
+  $('.guarded').click(function() {
+    alert("success!");
+    return false;
+  });
 });
