@@ -45,7 +45,7 @@ QUEUE = {
 (function () {
   $(document).bind("click", QUEUE.click_handler);
   $(document).ready(function () {
-    $(document).unbind("click", QUEUEclick_handler);
+    $(document).unbind("click", QUEUE.click_handler);
     for (var i=0, il=QUEUE.clicks.length; i<il; i++) {
       $(QUEUE.clicks[i].target).click();
     };
