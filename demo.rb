@@ -86,8 +86,8 @@ __END__
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;">&nbsp; <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
       <li style="font-weight: normal; vertical-align:top;font: normal normal 130% 'Courier New', Courier, monospace; color: #003030;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;color: #000020;"><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
       </ol></div>
-      <p>If we have a slow loading page, this means we have a problem.</p>
-      <img src="clickcatcher.png" alt="visualized">
+      <p>For a slow loading page, this is implementation has a problem.</p>
+      <img src="clickcatcher.png" alt="problem-visualized">
       
       <h2>Solution</h2>
       <p>Put dangerous click events on hold until the document is fully loaded.</p>
