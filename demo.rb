@@ -132,6 +132,9 @@ __END__
         <li>Expected behaviour for a click during the first 5 seconds; delay the click to the fifth second then display an alert with the text "success!"</li>
         <li>Expected behaviour after 5 seconds is an alert with the text "success!"</li>
       </ul>
+      
+      <h2>Disclaimer</h2>
+      <p>You would probably do not want to load the jquery library at the top of your page if you can avoid it.</p>
     </div>
     <script src="/slow-request.js" type="text/javascript" charset="utf-8"></script>
   </body>
